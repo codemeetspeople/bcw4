@@ -1,3 +1,6 @@
+#ifndef LOCATION_HPP
+#define LOCATION_HPP
+
 #include <iostream>
 
 class Location {
@@ -15,3 +18,5 @@ class Location {
 };
 
 std::ostream& operator<<(std::ostream& out, const Location& loc);
+
+#endif
