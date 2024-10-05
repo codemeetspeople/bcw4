@@ -25,9 +25,7 @@ class Animal {
 
 class Cat : public Animal {
     public:
-        Cat(const std::string& name = "Cat") {
-            this->name = name;
-        }
+        Cat(const std::string& name = "Cat") : Animal(name) {}
         ~Cat() {}
 
         void walk() const {
@@ -45,9 +43,7 @@ class Cat : public Animal {
 
 class Dog : public Animal {
     public:
-        Dog(const std::string& name = "Dog") {
-            this->name = name;
-        }
+        Dog(const std::string& name = "Dog") : Animal(name) {}
         ~Dog() {}
 
 
