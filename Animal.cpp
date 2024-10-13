@@ -23,7 +23,7 @@ class Animal {
 };
 
 
-class Cat : public Animal {
+class Cat : virtual public Animal {
     public:
         Cat(const std::string& name = "Cat") : Animal(name) {}
         ~Cat() {}
@@ -41,7 +41,7 @@ class Cat : public Animal {
         }
 };
 
-class Dog : public Animal {
+class Dog : virtual public Animal {
     public:
         Dog(const std::string& name = "Dog") : Animal(name) {}
         ~Dog() {}
@@ -60,20 +60,37 @@ class Dog : public Animal {
         }
 };
 
+class CatDog : public Cat, public Dog {
+    public:
+        CatDog(const std::string& name = "CatDog") {
+            this->name = name;
+        }
+        ~CatDog() {}
+
+        void walk() const {
+            std::cout << this->getName() << " walks alone with master..." << std::endl;
+        }
+
+        void eat() const {
+            std::cout << this->getName() << " eats meat and fish..." << std::endl;
+        }
+};
+
 
 int main() {
-    Cat* cat = new Cat();
-    Dog* dog = new Dog();
+    CatDog* cd = new CatDog();
 
-    cat->walk();
-    cat->eat();
-    cat->dissapear();
-    cat->meow();
+    cd->meow();
+    cd->woof();
+    cd->walk();
+    cd->eat();
+    cd->Cat::walk();
+    cd->Cat::eat();
+    cd->Dog::walk();
+    cd->Dog::eat();
+    cd->dissapear();
 
-    dog->walk();
-    dog->eat();
-    dog->dissapear();
-    dog->woof();
+    delete(cd);
 
     return 0;
 }
